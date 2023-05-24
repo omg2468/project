@@ -92,7 +92,7 @@ export default function Menucenter() {
     );
 
   if (!pagenumber || (dataItem.length < 12 && pagenumber != 1)) {
-    navigate(`menu/1${location.search}`);
+    navigate(`/menu/1${location.search}`);
   }
 
   const listOption = option.map((option, index) => (
