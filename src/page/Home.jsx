@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Header from "./Homecomponent/header";
+import Header from "../component/Header";
 import Aboutus from "./Homecomponent/Aboutus";
 import Homenew from "./Homecomponent/Homenew";
 import Swiper from "./Homecomponent/Swiper";
