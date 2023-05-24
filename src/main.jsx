@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       { path: "/menu/:pagenumber", element: <Menu /> },
       { path: "/new", element: <News /> },
       { path: "/new/newdetails", element: <Newdetails /> },
-      { path: "/detail/:iditem", element: <DetailItem /> },
+      { path: "menu/detail/:iditem", element: <DetailItem /> },
     ],
   },
 ]);

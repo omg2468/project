@@ -60,7 +60,7 @@ export default function Item({ name, price, image, star, discount, id }) {
         {discount}%
       </div>
       <div className="img_item">
-        <Link to={`/detail/${id}`}>
+        <Link to={`/menu/detail/${id}`}>
           <img src={image} alt={name} />
         </Link>
       </div>

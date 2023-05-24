@@ -41,7 +41,7 @@ export default function Searchresult({
     return parse(resultStart);
   };
   return (
-    <Link to={`/detail/${id}`} className="no-decoration">
+    <Link to={`/menu/detail/${id}`} className="no-decoration">
       <div className="box_result d-flex">
         <div className="result_img">
           <img src={image} alt={name} />
