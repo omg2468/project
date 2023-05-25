@@ -41,11 +41,16 @@ export default function Header({ length }) {
   let id = 1;
 
   const closeNavbar = () => {
-    collapsed.current.classList.add("collapsed");
-    collapsed.current.classList.remove("show");
+    collapsed.current?.classList.add("collapsed");
+    collapsed.current?.classList.remove("show");
   };
 
-  window.addEventListener("click", closeNavbar);
+  useEffect(() => {
+    window.addEventListener("click", closeNavbar);
+    return () => {
+      window.removeEventListener("click", closeNavbar);
+    };
+  });
 
   return (
     <div className="navbar_container position-fixed top-0 z-2 d-flex justify-content-center align-items-start">
@@ -67,11 +72,7 @@ export default function Header({ length }) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink
-                  className="nav-link"
-                  to="/menu"
-                  onClick={closeNavbar}
-                >
+                <NavLink className="nav-link" to="/menu" onClick={closeNavbar}>
                   Thực đơn
                 </NavLink>
               </li>

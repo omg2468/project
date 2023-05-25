@@ -54,11 +54,6 @@ export default function Menucenter() {
     getProduct();
   }, []);
   let { pagenumber } = useParams();
-  console.log(pagenumber);
-
-  console.log(
-    filterdata.filter((data) => data.name.toLowerCase().includes(search))
-  );
 
   let dataItem = (
     selectedCategories.length == 0
@@ -137,6 +132,8 @@ export default function Menucenter() {
                 aria-label="Previous"
                 id="previous"
                 onClick={() => {
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
                   navigate(`/menu/1${location.search}`);
                 }}
               >
@@ -150,6 +147,8 @@ export default function Menucenter() {
                 }
                 id="one"
                 onClick={() => {
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
                   navigate(`/menu/1${location.search}`);
                 }}
               >
@@ -163,6 +162,8 @@ export default function Menucenter() {
                 }
                 id="two"
                 onClick={() => {
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
                   navigate(`/menu/2${location.search}`);
                 }}
                 style={{ display: dataItem.length > 12 ? "block" : "none" }}
@@ -174,6 +175,8 @@ export default function Menucenter() {
               <Link
                 className="page-link"
                 onClick={() => {
+                  window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
                   if (dataItem.length >= 12)
                     navigate(`/menu/2${location.search}`);
                 }}

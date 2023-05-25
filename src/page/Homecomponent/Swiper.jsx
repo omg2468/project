@@ -93,7 +93,7 @@ export default function Swiperhome() {
             </div>
             <div className="buy-nows">
               <Link to="/cart">
-                <button>Mua ngay</button>
+                <button>Tới giỏ hàng</button>
               </Link>
             </div>
           </div>

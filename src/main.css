@@ -19,7 +19,6 @@ body::-webkit-scrollbar {
   width: 10px;
 }
 
-
 body::-webkit-scrollbar-thumb {
   background-color: red;
   outline: 1px solid red;
@@ -29,10 +28,14 @@ body::-webkit-scrollbar-thumb {
   width: 10px;
 }
 
-
-
 .sreach_result::-webkit-scrollbar-thumb {
   background-color: red;
   outline: 1px solid red;
   border-radius: 10px;
+}
+
+.close_item i {
+  color: red;
+  font-size: 30px;
+  cursor: pointer;
 }

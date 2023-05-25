@@ -35,6 +35,7 @@ export default function Cart() {
   };
 
   const handleChange = (id, value) => {
+    if (value > 1000) return;
     const cleanedInput = value.replace(/[^0-9/]/g, "");
     setData((prev) =>
       prev.map((data) =>
