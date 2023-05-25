@@ -39,3 +39,8 @@ body::-webkit-scrollbar-thumb {
   font-size: 30px;
   cursor: pointer;
 }
+
+.swiper-slide-prev, .swiper-slide-next {
+  width: 50%;
+}
+

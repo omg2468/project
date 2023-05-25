@@ -345,8 +345,13 @@ h2 {
   display: block;
 }
 
+.swiper-slide.sell img {
+  object-fit: cover;
+}
+
 .swiper-slide.sell.swiper-slide-active img {
   width: 50%;
+  object-fit: cover
 }
 
 .swiper-slide.sell h3 {
@@ -355,10 +360,10 @@ h2 {
   text-overflow: ellipsis;
 }
 
-.swiper-slide.sell.swiper-slide-prev,
+/* .swiper-slide.sell.swiper-slide-prev,
 .swiper-slide.sell.swiper-slide-next {
   width: 250px;
-}
+} */
 
 /* oder-box */
 .order_box {
