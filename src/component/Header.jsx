@@ -4,6 +4,7 @@ import "./header.css";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Searchresult from "./Searchresult";
+import { useSelector } from "react-redux";
 
 const getProduct = async () => {
   const res = await fetch(`https://api-product-g1bk.vercel.app/product`);
@@ -11,7 +12,7 @@ const getProduct = async () => {
   return data;
 };
 
-export default function Header({ length }) {
+export default function Header() {
   const [data, setData] = useState([]);
   const [input, setInput] = useState([]);
   const [focus, setFocus] = useState([false]);
@@ -23,6 +24,8 @@ export default function Header({ length }) {
   useEffect(() => {
     getProduct().then(setData);
   }, []);
+
+  const addcart = useSelector((state) => state.addcart);
 
   const handleKeyDown = (e) => {
     if (e.keyCode == 13) {
@@ -136,7 +139,7 @@ export default function Header({ length }) {
           <Link to="/cart">
             <i className="bi bi-cart4 m-3" />
           </Link>
-          <div className="cart_number">{length}</div>
+          <div className="cart_number">{addcart.item.length}</div>
         </div>
       </form>
     </div>

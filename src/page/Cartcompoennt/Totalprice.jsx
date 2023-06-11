@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function Totalprice({ name, value, price, discount }) {
+
   const formattedNumber = (number) => {
     let value = new Intl.NumberFormat("vi-VN", {
       style: "decimal",

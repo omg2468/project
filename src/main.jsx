@@ -13,7 +13,8 @@ import Newdetails from "./page/Newdetails.jsx";
 import Checkout from "./page/Checkout.jsx";
 import DetailItem from "./page/DetailItem";
 import "./main.css";
-
+import { Provider } from "react-redux";
+import store from "./features/store";
 const router = createBrowserRouter([
   {
     element: <Layout />,
@@ -34,6 +35,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

@@ -62,7 +62,7 @@ export default function Layout() {
 
   return (
     <ProviderShow.Provider value={alldata}>
-      <Header length={lengthdata} data={cart}/>
+      <Header data={cart} />
       <ToastContainer
         position="top-right"
         autoClose={2000}

@@ -3,6 +3,7 @@ import Header from "./Homecomponent/Header";
 import Aboutus from "./Homecomponent/Aboutus";
 import Homenew from "./Homecomponent/Homenew";
 import Swiper from "./Homecomponent/Swiper";
+// import Animation from "../component/Animation";
 import "./home.css";
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <div>
       <Header />
+      {/* <Animation/> */}
       <Aboutus />
       <Swiper />
       <Homenew />

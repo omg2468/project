@@ -6,6 +6,8 @@ import "swiper/swiper-bundle.css";
 import "swiper/css/effect-coverflow";
 import { ProviderShow } from "../../component/Layout";
 import parse from "html-react-parser";
+import { useDispatch, useSelector } from "react-redux";
+import { addcartAction } from "../../features/addcart/addCart.slice";
 
 export default function Swiperhome() {
   const [data, setData] = useState([]);
@@ -22,12 +24,12 @@ export default function Swiperhome() {
     getProduct();
   }, []);
 
+  const dispatch = useDispatch();
+
   const alldata = useContext(ProviderShow);
 
-  const handleData = (id) => {
-    alldata.notify();
-    alldata.handleData(id);
-  };
+  const addcart = useSelector((state) => state.addcart);
+  console.log(addcart);
 
   const formattedNumber = (number) => {
     let value = new Intl.NumberFormat("vi-VN", {
@@ -89,7 +91,21 @@ export default function Swiperhome() {
           </div>
           <div className="button-item">
             <div className="add-item">
-              <button onClick={() => handleData(product.id)}>Thêm vào giỏ</button>
+              <button
+                onClick={() => {
+                  alldata.notify();
+                  const id = product.id;
+                  const name = product.name;
+                  const image = product.image;
+                  const price = product.price;
+                  const discount = product.discount;
+                  dispatch(
+                    addcartAction.add({ id, name, image, price, discount })
+                  );
+                }}
+              >
+                Thêm vào giỏ
+              </button>
             </div>
             <div className="buy-nows">
               <Link to="/cart">

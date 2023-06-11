@@ -4,8 +4,15 @@ import { Button } from "react-bootstrap";
 import { ProviderShow } from "../../component/Layout";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useSelector, useDispatch } from "react-redux";
+import { addcartAction } from "../../features/addcart/addCart.slice";
 
 export default function Item({ name, price, image, star, discount, id }) {
+  const alldata = useContext(ProviderShow);
+  const dispatch = useDispatch();
+
+  const addcart = useSelector((state) => state.addcart);
+
   const formattedNumber = (number) => {
     let value = new Intl.NumberFormat("vi-VN", {
       style: "decimal",
@@ -16,10 +23,8 @@ export default function Item({ name, price, image, star, discount, id }) {
 
   const handleData = () => {
     alldata.notify();
-    alldata.handleData(id);
+    dispatch(addcartAction.add({ id, name, image, price, discount }));
   };
-
-  const alldata = useContext(ProviderShow);
 
   const countStar = (star) => {
     let resultStart = "";
@@ -59,7 +64,12 @@ export default function Item({ name, price, image, star, discount, id }) {
       >
         {discount}%
       </div>
-      <div className="img_item">
+      <div
+        className="img_item"
+        onClick={() => {
+          window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+        }}
+      >
         <Link to={`/menu/detail/${id}`}>
           <img src={image} alt={name} />
         </Link>

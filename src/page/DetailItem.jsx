@@ -5,6 +5,8 @@ import Item from "./Menucomponent/Item";
 import parse from "html-react-parser";
 import { ProviderShow } from "../component/Layout";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addcartAction } from "../features/addcart/addCart.slice";
 
 export default function DetailItem() {
   const [data, setData] = useState([]);
@@ -23,6 +25,8 @@ export default function DetailItem() {
   useEffect(() => {
     getProduct();
   }, []);
+
+  const dispatch = useDispatch();
 
   const alldata = useContext(ProviderShow);
 
@@ -104,7 +108,23 @@ export default function DetailItem() {
                   <div className="button-item d-flex">
                     <div
                       className="add-item"
-                      onClick={() => handleData(newitem.id)}
+                      onClick={() => {
+                        const id = newitem.id;
+                        const name = newitem.name;
+                        const image = newitem.image;
+                        const price = newitem.price;
+                        const discount = newitem.discount;
+                        alldata.notify();
+                        dispatch(
+                          addcartAction.add({
+                            id,
+                            name,
+                            image,
+                            price,
+                            discount,
+                          })
+                        );
+                      }}
                     >
                       <button>Thêm vào giỏ</button>
                     </div>

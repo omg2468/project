@@ -1,15 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addcartAction } from "../../features/addcart/addCart.slice";
 
 export default function Itemmobile({
   price,
   image,
   value,
   title,
-  onChange,
-  onClick,
   id,
   discount,
 }) {
+  const dispatch = useDispatch();
+
   const formattedNumber = (number) => {
     let value = new Intl.NumberFormat("vi-VN", {
       style: "decimal",
@@ -19,11 +21,14 @@ export default function Itemmobile({
   };
   const handleInputChange = (event) => {
     const check = event.nativeEvent.data;
-    if (event.target.value < 1) {
-      if (/^[1-9]\d*$/.test(check)) {
-        onChange(id, event.target.value);
-      } else return;
-    } else onChange(id, event.target.value);
+    const some = event.target.value;
+    if (check === "/") return;
+    if (
+      (some > 1 && /^[1-9]\d*$/.test(check) && some < 1000) ||
+      (check === null && some)
+    ) {
+      dispatch(addcartAction.changevalue({ id, some }));
+    }
   };
 
   return (
@@ -51,7 +56,10 @@ export default function Itemmobile({
           </b>
         </div>
       </div>
-      <div className="close_item cart-2" onClick={() => onClick(id)}>
+      <div
+        className="close_item cart-2"
+        onClick={() => dispatch(addcartAction.remove({ id }))}
+      >
         <i className="bi bi-x" />
       </div>
     </div>
